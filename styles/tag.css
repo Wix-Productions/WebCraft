@@ -1,0 +1,54 @@
+tag {
+	position: fixed;
+	top: 0;
+	left: 0;
+	
+	display: grid;
+	
+	grid-auto-rows: 1fr;
+	grid-template-columns: 1fr;
+	
+	width: 100%;
+	max-width: 30rem;
+	
+	max-height: 2.8rem;
+	
+	background: #667;
+	
+	color: #FFF;
+	
+	padding: 0.3rem 0.5rem;
+}
+
+tag title {
+	display: block;
+	
+	font-size: 0.9rem;
+	font-weight: bold;
+	font-weight: var(--bold);
+}
+
+tag description {
+	color: #CCC;
+	font-size: 0.7rem;
+}
+
+tag[type="warn"] {
+	background: #F50;
+}
+
+tag[type="error"] {
+	background: #F00;
+}
+
+tag[type="info"] {
+	background: #08F;
+}
+
+@media (min-width: 30rem) {
+	tag {
+		left: calc((100vw - 30rem) / 2);
+		
+		border-radius: 0 0 1rem 1rem;
+	}
+}
