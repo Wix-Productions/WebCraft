@@ -26,3 +26,12 @@ body {
 	
 	margin: 0 0.5rem;
 }
+
+a {
+	color: #08F;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
