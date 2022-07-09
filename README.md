@@ -1,6 +1,6 @@
 # WebCraft
 
-[![Play](https://img.shields.io/website?down_color=%23F00&down_message=Website%20down&label=Play&up_color=%2308F&up_message=Website%20online&url=https%3A%2F%2Fwebcraft.wixonic.fr)](https://webcraft.wixonic.fr) [![Last release](https://img.shields.io/github/v/release/Wix-Productions/WebCraft?color=%2308F&label=Last%20release)](https://github.com/Wix-Productions/WebCraft/releases/latest)
+[![Play](https://img.shields.io/website?down_color=%23F00&down_message=Website%20down&label=Play&up_color=%2308F&up_message=Website%20online&url=https%3A%2F%2Fwebcraft.wixonic.fr)](https://webcraft.wixonic.fr)
 
 - [Wiki and Official documentation](https://github.com/Wix-Productions/WebCraft/wiki)
 - [Support](https://github.com/Wix-Productions/WebCraft/blob/Default/.github/SUPPORT.md)
