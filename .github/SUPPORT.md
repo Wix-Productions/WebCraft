@@ -1,4 +1,4 @@
 # Support
 
-- [Ask community](https://github.com/Wix-Productions/WebCraft/discussions/categories/q-a)
-- [Contact Staff](mailto:contact@wixonic.fr)
+- [WebCraft Community Forum](https://github.com/Wix-Productions/WebCraft/discussions/categories/q-a)
+- [Wix-Productions Staff](mailto:contact@wixonic.fr)
