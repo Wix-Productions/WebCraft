@@ -16,7 +16,10 @@ window.ready = () => {
 			selector: "body [disabled]",
 			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
 			function: (event) => {
-				event.preventDefault();
+				if (event.cancelable) {
+					event.preventDefault();
+				}
+				
 				event.stopImmediatePropagation();
 			}
 		}
