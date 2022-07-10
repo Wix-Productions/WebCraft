@@ -4,7 +4,7 @@ window.executeDOMActions = (actions) => {
 		
 		for (let element of elements) {
 			for (let event of action.events) {
-				element.addEventListener(event,action);
+				element.addEventListener(event,action.function);
 			}
 		}
 	}
@@ -13,12 +13,17 @@ window.executeDOMActions = (actions) => {
 window.ready = () => {
 	const actions = [
 		{
+			selector: "body [disabled]",
+			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
+			function: (event) => {
+				event.preventDefault();
+				event.stopImmediatePropagation();
+			}
+		},{
 			selector: "a",
 			events: ["click","mouseup","touchend"],
 			function: (event) => {
-				if (this.getAttribute("disabled") != "true") {
-					this.setAttribute("href",this.getAttribute("url"));
-				}
+				this.setAttribute("href",this.getAttribute("url"));
 			}
 		}
 	];
