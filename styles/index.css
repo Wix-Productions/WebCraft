@@ -53,10 +53,22 @@ main a {
 	padding: 1.5rem 0.5rem;
 
 	transition: background 0.2s linear;
+	
+	cursor: pointer;
 }
 
 main a:hover {
 	background: #33333C;
 
 	text-decoration: none;
+}
+
+main a[disabled] {
+	color: #333;
+	
+	cursor: default;
+}
+
+main a[disabled]:hover {
+	background: #22222B;
 }
