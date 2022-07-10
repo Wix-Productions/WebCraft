@@ -24,4 +24,4 @@ window.ready = () => {
 	];
 	
 	executeDOMActions(actions);
-});
+};
