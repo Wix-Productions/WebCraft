@@ -23,7 +23,7 @@ window.ready = () => {
 			selector: "a",
 			events: ["click","mouseup","touchend"],
 			function: (event) => {
-				this.setAttribute("href",this.getAttribute("url"));
+				event.target.setAttribute("href",event.target.getAttribute("url"));
 			}
 		}
 	];
