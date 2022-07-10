@@ -13,14 +13,12 @@ window.executeDOMActions = (actions) => {
 window.ready = () => {
 	const actions = [
 		{
-			selector: "body [disabled]",
-			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
+			selector: "a",
+			events: ["click","mouseup","touchend"],
 			function: (event) => {
-				if (event.cancelable) {
-					event.preventDefault();
+				if (this.getAttribute("disabled") != "true") {
+					this.setAttribute("href",this.getAttribute("url"));
 				}
-				
-				event.stopImmediatePropagation();
 			}
 		}
 	];
