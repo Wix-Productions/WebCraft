@@ -17,7 +17,10 @@ window.ready = () => {
 			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
 			function: (event) => {
 				if (this.getAttribute("disabled") == "true") {
-					event.preventDefault();
+					try {
+						event.preventDefault();
+						event.stopImmediatePropagation();
+					} catch {}
 				}
 			}
 		}
