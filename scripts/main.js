@@ -13,15 +13,11 @@ window.executeDOMActions = (actions) => {
 window.ready = () => {
 	const actions = [
 		{
-			selector: "body *",
+			selector: "body [disabled]",
 			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
 			function: (event) => {
-				if (this.getAttribute("disabled") == "true") {
-					try {
-						event.preventDefault();
-						event.stopImmediatePropagation();
-					} catch {}
-				}
+				event.preventDefault();
+				event.stopImmediatePropagation();
 			}
 		}
 	];
