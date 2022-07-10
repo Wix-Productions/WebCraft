@@ -10,7 +10,7 @@ window.executeDOMActions = (actions) => {
 	}
 };
 
-window.addEventListener("load",() => {
+window.ready = () => {
 	const actions = [
 		{
 			selector: "*",
@@ -22,4 +22,6 @@ window.addEventListener("load",() => {
 			}
 		}
 	];
+	
+	executeDOMActions(actions);
 });
