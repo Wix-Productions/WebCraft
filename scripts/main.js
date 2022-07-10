@@ -19,12 +19,6 @@ window.ready = () => {
 				event.preventDefault();
 				event.stopImmediatePropagation();
 			}
-		},{
-			selector: "a",
-			events: ["click","mouseup","touchend"],
-			function: (event) => {
-				event.target.setAttribute("href",event.target.getAttribute("url"));
-			}
 		}
 	];
 	
