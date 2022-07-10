@@ -13,7 +13,7 @@ window.executeDOMActions = (actions) => {
 window.ready = () => {
 	const actions = [
 		{
-			selector: "*",
+			selector: "body *",
 			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
 			function: (event) => {
 				if (this.getAttribute("disabled") == "true") {
