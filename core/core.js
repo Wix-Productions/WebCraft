@@ -14,21 +14,40 @@ window.whenReady = () => {
 	if (window.queries) {
 		switch (true) {
 			case (queries.join !== undefined):
-				console.log("Join mode");
+				
 				break;
 
 			case (queries.create !== undefined):
-				console.log("Create mode");
+				
 				break;
 
 			case (queries.load !== undefined):
-				console.log("Load mode");
+				try {
+					decodeDataURL(`blob:null/${unescape(decodeURIComponent(queries.load))}`).then((datas) => {
+
+					});
+				} catch (e) {
+					crash("Cannot load world",e,"1-2");
+				}
 				break;
 
 			default:
 				main.innerHTML = `<h1>Offline</h1><button id="create">Create world</button><label for="load">Load world</label><input id="load" type="file" style="display: none; visibility: hidden;" /><input id="code" type="text" placeholder="Frendly code.." />`;
 				
-				document.getElementByid("")
+				document.getElementById("create").addEventListener("click",() => window.location.search = "?create=0");
+				
+				document.getElementById("load").addEventListener("input",(e) => {
+					const file = e.target.files[0];
+					const name = file.name.split(".");
+
+					if (file && name[name.length - 1] === "webcraft" && name[name.length - 2] !== "resources") {
+						window.location.search = `?load=${encodeURIComponent(escape(URL.createObjectURL(file).replace("blob:null/","")))}`;
+					}
+				});
+
+				document.getElementById("code").addEventListener("blur",(e) => {
+					window.location.search = `?join=${e.target.value}`;
+				});
 				break;
 		}
 	}
