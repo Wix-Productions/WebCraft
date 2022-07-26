@@ -16,11 +16,11 @@ window.whenReady = () => {
 	if (window.queries) {
 		switch (true) {
 			case (queries.join !== undefined):
-				
+				crash(null,null,"1.3");
 				break;
 
 			case (queries.create !== undefined):
-				
+				crash(null,null,"1.1");
 				break;
 
 			case (queries.load !== undefined):
