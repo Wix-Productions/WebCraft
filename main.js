@@ -23,4 +23,8 @@ window.ready = () => {
 	];
 	
 	executeDOMActions(actions);
+
+	if (typeof window.whenReady == "function") {
+		whenReady();
+	}
 };

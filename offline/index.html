@@ -6,7 +6,7 @@
 	
 	<head>
 		
-		<title>WebCraft</title>
+		<title>Offline | WebCraft</title>
 		
 		<meta charset="utf-8" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -15,7 +15,7 @@
 
 		<meta name="author" content="Wixonic, contact@wixonic.fr" />
 		<meta name="description" content="Farm, Craft, Build." />
-		<meta name="robots" content="index,follow" />
+		<meta name="robots" content="noindex,follow" />
 		
 		<meta name="og:description" content="Farm, Craft, Build." />
 		<meta name="og:email" content="contact@wixonic.fr"/>
@@ -38,15 +38,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5ZQQKQM');
 		</script>
 
-		<link rel="stylesheet" href="main.css" />
-		<link rel="stylesheet" href="tag.css" />
+		<link rel="stylesheet" href="../main.css" />
+		<link rel="stylesheet" href="../tag.css" />
 		<link rel="stylesheet" href="index.css" />
 		
-		<script src="main.js"></script>
+		<script src="../main.js"></script>
+		<script src="../core/core.js"></script>
 
 	</head>
 	
-	<body>
+	<body without-maintenance="true" without-tag="true">
 		
 		<noscript class="google-tag-manager">
 
@@ -54,19 +55,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display: none; visibility: hidden;"></iframe>
 			
 		</noscript>
+
+		<main></main>
 		
-		<main>
-
-			<a interface="online" href="online/">Online</a>
-
-			<a interface="offline" href="offline/">Offline</a>
-
-			<a interface="editor" href="edit/">Editor</a>
-
-			<a interface="settings" href="settings/">Settings</a>
-
-		</main>
-
 	</body>
 	
 </html>

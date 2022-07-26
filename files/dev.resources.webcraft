@@ -1,0 +1,42 @@
+{
+	"a": "author name",
+	"c": "author email",
+	"n": "package name",
+	"s": "package summary",
+	"v": "package version",
+
+	"d": { // package datas
+		"b": [ // blocks
+			{
+				"c": "code name",
+				"d": { // datas
+					"b": 1, // may be broken
+					"c": 1, // may be collected
+					"d": 1, // may be destroyed
+					"e": 1, // may be exploded
+				},
+				"i": {}, // initial blockdatas
+				"n": "display name",
+				"r": [ // rendering: each item is a cube
+					{
+						"p": { // position
+							"x": 1,
+							"y": 1,
+							"z": 1
+						},
+
+						"s": { // size
+							"x": 1,
+							"y": 1,
+							"z": 1
+						},
+
+						"t": [ // textures (all faces || all + top || all + top + bottom || front + back + top + bottom + left + right)
+							"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAUklEQVQ4jbWSMQ4AIAgD+/9P182IooBVEhZCj0ABASoJAsRlGEAFZDSjMANZ+mfRCeL2eoJSbTcxs1roQnSTlI3hgC8rSEeUbJQe6ckrV6MDlGzqVaNdkfHd8wAAAABJRU5ErkJgggAA"
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"b": { // blocks
+		"0-0-0": { // block position
+			"t": 0, // block type
+			"d": {}, // block datas
+		}
+	},
+
+	"r": {}, // optional - resources package
+
+	"p": { // players
+		"h": { // world owner (h or an id)
+			"p": { // position
+				"x": "0",
+				"y": "1",
+				"z": "0",
+				"ox": 0, // x rotation
+				"oy": 0, // y rotation
+			}
+		}
+	},
+
+	"m": [ // mobs
+
+	]
+}
