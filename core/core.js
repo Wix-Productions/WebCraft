@@ -1,3 +1,5 @@
+window.onerror = (e) => crash(null,e);
+
 window.whenReady = () => {
 	window.main = document.getElementsByTagName("main")[0];
 
@@ -27,7 +29,7 @@ window.whenReady = () => {
 
 					});
 				} catch (e) {
-					crash("Cannot load world",e,"1-2");
+					crash("Cannot load world",e,"1.2");
 				}
 				break;
 
