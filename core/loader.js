@@ -1,4 +1,4 @@
-const quoteDuration = 5000;
+const quoteDuration = 7500;
 let previousQuote = -1;
 
 const RandomQuote = () => {
@@ -17,7 +17,7 @@ const Quotes = [
 	"Thank you for playing WebCraft!",
 	"Webcraft's development has been restarted four times before this version!",
 	"The Voidbarrier had to be called Bedrock as on Minecraft®, before being changed.",
-	"At the beginning, Wixonic was alone on Wixonic Productons."
+	"At the beginning, Wixonic was alone on Wixonic Productions."
 ];
 
 
