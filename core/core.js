@@ -2,7 +2,7 @@ window.onerror = (e) => crash(null,e);
 
 
 const Launch = async () => {
-	Loader.set(8);
+	Loader.set(9);
 	Loader.show();
 
 	try {
@@ -11,10 +11,16 @@ const Launch = async () => {
 	} catch (e) {
 		crash("World error",e,"3");
 	}
+
+	// Loader: 8
+
+	Loader.say("Adding render frame");
+	document.body.append(canvas);
+	Loader.step();
 };
 
 
-window.whenReady = () => {
+window.addEventListener("DOMContentLoaded",() => {
 	Loader.init()
 
 	window.main = document.getElementsByTagName("main")[0];
@@ -88,4 +94,4 @@ window.whenReady = () => {
 				break;
 		}
 	}
-};
+});

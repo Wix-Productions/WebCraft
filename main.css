@@ -14,6 +14,8 @@
 	
 	box-sizing: border-box;
 	outline: none;
+
+	color: #FFF;
 	
 	margin: 0;
 	padding: 0;
@@ -27,6 +29,9 @@
 }
 
 body {
+	background-color: #111119;
+	background-image: url(../assets/background-logo.png);
+
 	font-family: "Inter", "Avenir Next", Avenir, Arial, Futura;
 	
 	margin: 0 0.5rem;

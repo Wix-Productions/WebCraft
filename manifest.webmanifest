@@ -1,5 +1,5 @@
 {
-	"background_color": "#112",
+	"background_color": "#111119",
 	"categories": ["games"],
 	"description": "Farm, Craft, Build.",
 	"dir": "ltr",
@@ -15,8 +15,8 @@
 	"lang": "en-US",
 	"name": "WebCraft",
 	"orientation": "landscape",
-	"scope": "/",
+	"scope": "https://webcraft.wixonic.fr",
 	"short_name": "WebCraft",
 	"start_url": "https://webcraft.wixonic.fr",
-	"theme_color": "#112",
+	"theme_color": "#111119"
 }

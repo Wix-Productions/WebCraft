@@ -1,5 +1,5 @@
 const defaultDisplay = () => {
-	main.innerHTML = `<h1>Offline</h1><button id="create">Create world</button><label for="load">Load world</label><input id="load" type="file" style="display: none; visibility: hidden;" /><br /><input id="code" type="text" placeholder="Frendly code.." /><button id="join">Join friend</button>`;
+	main.innerHTML = `<h1>Offline</h1><button id="create" interface="offline_world_creation">Create world</button><label for="load" interface="offline_world_loader">Load world</label><input id="load" type="file" style="display: none; visibility: hidden;" /><br /><input id="code" interface="offline_friendly" type="text" placeholder="Frendly code.." /><button id="join" interface="offline_friendly">Join friend</button>`;
 
 	document.getElementById("create").addEventListener("click",() => window.location.search = "?create=0");
 
@@ -40,4 +40,6 @@ const defaultDisplay = () => {
 	});
 
 	document.getElementById("join").addEventListener("click",() => joinWith(code.value));
+
+	waitUntilReady(checkIfDisabled);
 };

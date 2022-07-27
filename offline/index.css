@@ -2,48 +2,50 @@
 	text-align: center;
 }
 
-button, label {
+button, label, input {
 	display: block;
-	
-	width: max-content;
-	
-	background: #F0F0F8;
-	
-	color: black;
-	font-size: 1rem;
-	
-	border: 0.1rem solid #F0F0F8;
+
+	background: #222;
+
+	border: 0.1rem solid #222;
 	border-radius: 0.5rem;
 	
 	margin: 0.5rem auto;
+
+	transition: background 0.2s linear;
+}
+
+button, label {
+	width: max-content;
+	
+	font-size: 1rem;
+	
 	padding: 0.6rem 1rem;
 	
 	cursor: pointer;
+}
+
+input {
+	width: 8rem;
+
+	font-size: 0.8rem;
 	
-	transition: background 0.2s linear;
+	padding: 0.2rem 0.4rem;
+	
+	cursor: text;
 }
 
 button:hover, label:hover, input:focus {
 	background: transparent;
 }
 
-input {
-	display: block;
+button[disabled], label[disabled], input[disabled] {
+	color: #333;
+	background: #181818;
 	
-	width: 8rem;
-	
-	background: #F0F0F8;
-	
-	color: black;
-	font-size: 0.8rem;
-	
-	border: 0.1rem solid #F0F0F8;
-	border-radius: 0.5rem;
-	
-	margin: 0.5rem auto;
-	padding: 0.2rem 0.4rem;
-	
-	cursor: text;
-	
-	transition: background 0.2s linear;
+	cursor: default;
+}
+
+button[disabled]:hover, label[disabled]:hover, input[disabled]:hover {
+	background: #181818;
 }

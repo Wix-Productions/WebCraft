@@ -1,30 +1,57 @@
-window.executeDOMActions = (actions) => {
-	for (let action of actions) {
-		const elements = document.querySelectorAll(action.selector);
-		
-		for (let element of elements) {
-			for (let event of action.events) {
-				element.addEventListener(event,action.function);
+window.ready = () => {
+	checkIfDisabled();
+
+	window.ready = true;
+
+	if (typeof window.onReady === "function") {
+		onReady();
+	}
+};
+
+window.waitUntilReady = (f) => {
+	if (window.ready === true) {
+		f();
+	} else {
+		requestAnimationFrame(() => waitUntilReady(f));
+	}
+};
+
+window.checkIfDisabled = () => {
+	for (let k in Interfaces) {
+		const interface = Interfaces[k];
+
+		if (interface.status.code !== "works") {
+			const elements = document.querySelectorAll(`*[interface="${interface.codename}"]`);
+
+			if (elements !== null && interface.status.code === "down") {
+				const events = ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"];
+
+				for (let x = 0; x < elements.length; ++x) {
+					const el = elements[x];
+
+					el.setAttribute("disabled","true");
+					el.setAttribute("readonly","true");
+
+					for (let y = 0; y < events.length; ++y) {
+						el.addEventListener(events[y],(e) => {
+							e.preventDefault();
+							e.stopImmediatePropagation();
+						});
+					}
+				}
 			}
+
+			for (let x = 0; x < elements.length; ++x) {
+				const el = elements[x];
+
+				interactiveTitle(el);
+
+				el.setAttribute("interactive-title",`${interface.status.code === "down" ? "Unavailable" : "Issued"}: ${interface.status.reason}`);
+			}	
 		}
 	}
 };
 
-window.ready = () => {
-	const actions = [
-		{
-			selector: "body [disabled]",
-			events: ["click","mousedown","mousemove","mouseup","touchstart","touchmove","touchend","input"],
-			function: (event) => {
-				event.preventDefault();
-				event.stopImmediatePropagation();
-			}
-		}
-	];
-	
-	executeDOMActions(actions);
+window.interactiveTitle = (el) => {
 
-	if (typeof window.whenReady == "function") {
-		whenReady();
-	}
 };

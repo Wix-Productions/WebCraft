@@ -1,8 +1,4 @@
 tag {
-	position: fixed;
-	top: 0;
-	left: 0;
-	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -13,9 +9,9 @@ tag {
 	
 	background: #667;
 	
-	color: #FFF;
 	text-align: center;
 	
+	margin: 0 auto;
 	padding: 0.3rem 0.5rem;
 }
 
@@ -45,9 +41,7 @@ tag[type="info"] {
 }
 
 @media (min-width: 30rem) {
-	tag {
-		left: calc((100vw - 30rem) / 2);
-		
+	tag {		
 		border-radius: 0 0 1rem 1rem;
 	}
 }
