@@ -1,0 +1,22 @@
+{
+	"background_color": "#112",
+	"categories": ["games"],
+	"description": "Farm, Craft, Build.",
+	"dir": "ltr",
+	"display": "standalone",
+	"display_override": ["fullscreen"],
+	"icons": [
+		{
+			"sizes": "any",
+			"src": "https://webcraft.wixonic.fr/assets/logo.png",
+			"type": "image/png"
+		}
+	],
+	"lang": "en-US",
+	"name": "WebCraft",
+	"orientation": "landscape",
+	"scope": "/",
+	"short_name": "WebCraft",
+	"start_url": "https://webcraft.wixonic.fr",
+	"theme_color": "#112",
+}

@@ -59,7 +59,7 @@ class World {
 				}).catch((i,e,c) => crash(i || "Resources package error",e,c || "3.3"));
 			}));
 		} else {
-			if (navigator.onLine && window.packageNotUpdated) {
+			if (navigator.onLine) {
 				Loader.say("Updating resources package");
 				await (new Promise((resolve) => {
 					World.loadResourcesPackage().then((pack) => {
@@ -71,7 +71,6 @@ class World {
 			} else {
 				Loader.step(2);
 			}
-			Loader.step(2);
 		}
 
 		Loader.say("Checking resources package datas");
