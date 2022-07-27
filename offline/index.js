@@ -13,22 +13,31 @@ const defaultDisplay = () => {
 	});
 
 	const joinWith = (key) => {
-		if (key.length == 8) {
+		if (key.length === 8) {
 			window.location.search = `?join=${key}`;
 		}
 	};
 
-	document.getElementById("code").addEventListener("keydown",(e) => {
-		console.log(e.code);
+	const code = document.getElementById("code");
 
+	code.addEventListener("keydown",(e) => {
 		if (e.code === "Enter") {
 			joinWith(e.target.value);
 		} else if (e.code === "Delete") {
 			e.target.value = "";
-		} else if (e.code !== "Backspace" && e.code !== "Escape" && !(/(?:[A-Z]|[a-z]|[0-9]){,8}/g.test(e.key))) {
+		} else if (e.code === "Backspace" || e.code === "Escape") {
+		} else if (!(/^(?:[A-Z]|[a-z]|[0-9]){0,8}$/.test(e.key))) {
+			e.preventDefault();
+		} else if (e.target.value.length === 8) {
 			e.preventDefault();
 		}
+
+		e.target.value = e.target.value.toUpperCase();
 	});
 
-	document.getElementById("join").addEventListener("click",() => joinWith(document.getElementById("code").value));
+	code.addEventListener("keyup",(e) => {
+		e.target.value = e.target.value.toUpperCase();
+	});
+
+	document.getElementById("join").addEventListener("click",() => joinWith(code.value));
 };

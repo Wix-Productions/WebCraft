@@ -21,7 +21,7 @@ Done	1-5		Cannot save world
 		3-0		Corrupt world
 		3-1		Parsing error on world datas
 		3-2		Generation error
-		3-2-1	Invaid block
+		3-2-1	Invalid block
 		3-3		Resources package error
 		3-3-0	Resources package not found
 		3-3-1	Parsing error on resources package
