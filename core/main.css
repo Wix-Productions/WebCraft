@@ -50,3 +50,53 @@ crash a:hover {
 
 	text-decoration: none;
 }
+
+loader {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+}
+
+loader * {
+	display: block;
+}
+
+loader title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	font-weight: 500;
+}
+
+loader container {
+	width: 100%;
+	max-width: 20rem;
+	height: 1rem;
+	
+	background: #CCC;
+	
+	border-radius: 1rem;
+	
+	margin: 0.5rem auto;
+	
+	overflow: hidden;
+}
+
+loader bar {
+	height: 100%;
+	
+	background: #000;
+}
+
+loader quotes {
+	color: #CCC;
+	font-size: 0.8rem;
+	font-style: italic;
+}

@@ -1,9 +1,10 @@
 {
 	"a": "Wixonic",
 	"c": "contact@wixonic.fr",
+	"i": "0",
 	"n": "Default",
 	"s": "Official and default resource pack for WebCraft.",
-	"v": "1.0",
+	"v": "1.0-dev-1",
 
 	"d": {
 		"b": [

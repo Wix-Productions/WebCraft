@@ -1,6 +1,7 @@
 {
 	"a": "author name",
 	"c": "author email",
+	"i": "package ID",
 	"n": "package name",
 	"s": "package summary",
 	"v": "package version",

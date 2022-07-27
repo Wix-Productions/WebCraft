@@ -1,6 +1,22 @@
 window.onerror = (e) => crash(null,e);
 
+
+const Launch = async () => {
+	Loader.set(8);
+	Loader.show();
+
+	try {
+		window.world = new World();
+		await world.from(datas);
+	} catch (e) {
+		crash("World error",e,"3");
+	}
+};
+
+
 window.whenReady = () => {
+	Loader.init()
+
 	window.main = document.getElementsByTagName("main")[0];
 
 	try {
@@ -12,7 +28,7 @@ window.whenReady = () => {
 
 		window.queries = Object.fromEntries(q);
 	} catch (e) {
-		crash("Invalid query parameters",e,"1.0")
+		crash("Invalid query parameters",e,"1.0");
 	}
 
 	if (window.queries) {
@@ -31,9 +47,9 @@ window.whenReady = () => {
 							sessionStorage.setItem("webcraft-offline-world",datas);
 							window.location.search = "?play=0";
 						} else {
-							crash("Cannot save world on your device","localStorage and sessionStorage aren't available","1.5")
+							crash("Cannot save world on your device","localStorage and sessionStorage aren't available","1.5");
 						}
-					}).catch((e) => crash("Cannot load world",e,"1.2"))
+					}).catch((e) => crash("Cannot load world",e,"1.2"));
 				} catch (e) {
 					crash("Cannot load world",e,"1.2");
 				}
@@ -50,7 +66,7 @@ window.whenReady = () => {
 					} else if (window.sessionStorage) {
 						window.datas = sessionStorage.getItem("webcraft-offline-world");
 					} else {
-						crash("Cannot save world on your device","localStorage and sessionStorage aren't available","1.5")
+						crash("Cannot save world on your device","localStorage and sessionStorage aren't available","1.5");
 					}
 
 					if (window.datas) {
@@ -60,8 +76,7 @@ window.whenReady = () => {
 							crash("Cannot open world",`ParsingError: invalid file (${e})`,"3.1");
 						}
 
-						window.world = new World();
-						world.from(datas);
+						Launch();
 					}
 				} catch (e) {
 					crash("Cannot open world",e,"1");

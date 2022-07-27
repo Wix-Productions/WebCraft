@@ -17,13 +17,13 @@ Done	1-5		Cannot save world
 		2-1		Invalid credentials
 		2-1-1	Expired credentials
 		2-2		Kicked user
-		3		World error
-		3-0		Corrupt world
-		3-1		Parsing error on world datas
+Used	3		World error
+Used	3-0		Corrupt world
+Used	3-1		Parsing error on world datas
 		3-2		Generation error
 		3-2-1	Invalid block
-		3-3		Resources package error
-		3-3-0	Resources package not found
-		3-3-1	Parsing error on resources package
-		3-3-2	Missing properties on resources package
+Used	3-3		Resources package error
+Used	3-3-0	Resources package not found
+Used	3-3-1	Parsing error on resources package
+Used	3-3-2	Missing properties on resources package
 		3-4		Rendering error
