@@ -34,6 +34,7 @@ crash reason {
 crash a {
 	background: #06F;
 	
+	color: #FFF;
 	font-size: 0.9rem;
 
 	border: 0.1rem solid #06F;
@@ -64,6 +65,8 @@ loader {
 
 	width: 100%;
 	height: 100%;
+
+	background: #111119;
 
 	z-index: 3;
 }
@@ -109,10 +112,9 @@ canvas {
 	top: 0;
 	left: 0;
 
-	width: 100%;
-	height: 100%;
-
 	background: #111119;
 
-	z-index: 1;
+	transform-origin: 0 0;
+
+	z-index: 2;
 }

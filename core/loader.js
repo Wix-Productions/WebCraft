@@ -15,9 +15,9 @@ const RandomQuote = () => {
 
 const Quotes = [
 	"Thank you for playing WebCraft!",
-	"Webcraft's development has been started five times before this version!",
+	"Webcraft's development has been restarted four times before this version!",
 	"The Voidbarrier had to be called Bedrock as on Minecraft®, before being changed.",
-	"At the beginning, Wixonic Productions only contained Wixonic."
+	"At the beginning, Wixonic was alone on Wixonic Productons."
 ];
 
 
@@ -27,7 +27,10 @@ const Loader = {
 	title: "Loading",
 	value: 1,
 
-	hide: () => Loader.DOM.container.style.display = "",
+	hide: () => {
+		Loader.DOM.container.style.display = "";
+		window.draw = window.drawLocked ? false : true;
+	},
 
 	init: () => {
 		Loader.DOM.container = document.createElement("loader");
@@ -60,7 +63,10 @@ const Loader = {
 		Loader._update();
 	},
 
-	show: () => Loader.DOM.container.style.display = "flex",
+	show: () => {
+		Loader.DOM.container.style.display = "flex";
+		window.draw = false;
+	},
 
 	step: (size=1) => {
 		Loader.value += size;

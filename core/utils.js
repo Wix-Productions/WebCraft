@@ -1,11 +1,14 @@
-const crash = (i,e,c) => {
+const crash = (i,e) => {
 	let error = null;
 
 	if (e instanceof Error) {
 		error = `${e.name || "Error"}: ${e.message || "Unknow error"} - ${e.cause || ""} (${e.lineNumber || 0}:${e.columnNumber || 0})<br />${(e.stack || "No stack").split("\n","<br />")}`
 	}
+	
+	document.body.innerHTML = `<crash><info>${i || "Oops"}</info><reason selectable>${error || e || "An unknow error occured"}</reason></crash>`;
 
-	document.body.innerHTML = `<crash><info>${i || "Oops"}</info><reason selectable>${error || e || "An unknow error occured"}</reason><a href="https://github.com/Wix-Productions/WebCraft/wiki/Error-Code%3A-${c || 0}" target="_blank">Error code: ${c || 0}</a></crash>`;
+	window.draw = false;
+	window.drawLocked = true;
 };
 
 const request = (url,type,timeout) => {

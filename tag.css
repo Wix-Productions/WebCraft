@@ -5,7 +5,7 @@ tag {
 	align-items: center;
 	
 	width: max-content;
-	max-width: 30rem;
+	max-width: min(30rem,100%);
 	
 	background: #667;
 

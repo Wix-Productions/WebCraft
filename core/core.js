@@ -2,21 +2,10 @@ window.onerror = (e) => crash(null,e);
 
 
 const Launch = async () => {
-	Loader.set(9);
+	Loader.set(1);
 	Loader.show();
 
-	try {
-		window.world = new World();
-		await world.from(datas);
-	} catch (e) {
-		crash("World error",e,"3");
-	}
-
-	// Loader: 8
-
-	Loader.say("Adding render frame");
-	document.body.append(canvas);
-	Loader.step();
+	
 };
 
 
@@ -34,13 +23,14 @@ window.addEventListener("DOMContentLoaded",() => {
 
 		window.queries = Object.fromEntries(q);
 	} catch (e) {
-		crash("Invalid query parameters",e,"1.0");
+		crash("Invalid query parameters",e);
+		return;
 	}
 
 	if (window.queries) {
 		switch (true) {
 			case (queries.create !== undefined):
-				crash(null,null,"1.1");
+				crash(null,null);
 				break;
 
 			case (queries.load !== undefined):
@@ -53,16 +43,16 @@ window.addEventListener("DOMContentLoaded",() => {
 							sessionStorage.setItem("webcraft-offline-world",datas);
 							window.location.search = "?play=0";
 						} else {
-							crash("Cannot save world on your device","localStorage and sessionStorage aren't available","1.5");
+							crash("Cannot save world on your device","localStorage and sessionStorage aren't available");
 						}
-					}).catch((e) => crash("Cannot load world",e,"1.2"));
+					}).catch((e) => crash("Cannot load world",e));
 				} catch (e) {
-					crash("Cannot load world",e,"1.2");
+					crash("Cannot load world",e);
 				}
 				break;
 
 			case (queries.join !== undefined):
-				crash(null,null,"1.3");
+				crash(null,null);
 				break;
 
 			case (queries.play !== undefined):
@@ -72,20 +62,20 @@ window.addEventListener("DOMContentLoaded",() => {
 					} else if (window.sessionStorage) {
 						window.datas = sessionStorage.getItem("webcraft-offline-world");
 					} else {
-						crash("Cannot save world on your device","localStorage and sessionStorage aren't available","1.5");
+						crash("Cannot save world on your device","localStorage and sessionStorage aren't available");
 					}
 
 					if (window.datas) {
 						try {
 							window.datas = JSON.parse(datas);
 						} catch (e) {
-							crash("Cannot open world",`ParsingError: invalid file (${e})`,"3.1");
+							crash("Cannot open world",`ParsingError: invalid file (${e})`);
 						}
 
 						Launch();
 					}
 				} catch (e) {
-					crash("Cannot open world",e,"1");
+					crash("Cannot open world",e);
 				}
 				break;
 
@@ -95,3 +85,20 @@ window.addEventListener("DOMContentLoaded",() => {
 		}
 	}
 });
+
+const Update = () => {
+	window.RW = innerWidth;
+	window.RH = innerHeight;
+	window.W = RW * Q;
+	window.H = RH * Q;
+
+	if (window.draw) {
+		try {
+
+		} catch (e) {
+			crash("Cannot render",e);
+		}
+	}
+
+	requestAnimationFrame(Update);
+};
