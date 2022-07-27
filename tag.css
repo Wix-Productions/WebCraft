@@ -8,10 +8,12 @@ tag {
 	max-width: 30rem;
 	
 	background: #667;
-	
+
 	text-align: center;
+
+	border-radius: 1rem;
 	
-	margin: 0 auto;
+	margin: 0.2rem auto;
 	padding: 0.3rem 0.5rem;
 }
 
@@ -38,10 +40,4 @@ tag[type="error"] {
 
 tag[type="info"] {
 	background: #08F;
-}
-
-@media (min-width: 30rem) {
-	tag {		
-		border-radius: 0 0 1rem 1rem;
-	}
 }
