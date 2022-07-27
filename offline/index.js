@@ -25,7 +25,7 @@ const defaultDisplay = () => {
 			joinWith(e.target.value);
 		} else if (e.code === "Delete") {
 			e.target.value = "";
-		} else if (e.code !== "Backspace" && e.code !== "Escape" && !(/(?:[A-Z]|[a-z]|[0-9]){,8}/.test(e.key))) {
+		} else if (e.code !== "Backspace" && e.code !== "Escape" && !(/(?:[A-Z]|[a-z]|[0-9]){,8}/g.test(e.key))) {
 			e.preventDefault();
 		}
 	});

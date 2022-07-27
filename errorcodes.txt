@@ -10,6 +10,7 @@ Done	1-2		Cannot load world
 		1-4-0	Server not found
 		1-4-1	Forbidden
 		1-4-2	Player is banned from the server
+Done	1-5		Cannot save world
 		2		User error
 		2-0		User not found
 		2-0-0	Banned user

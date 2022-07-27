@@ -2,6 +2,26 @@ const crash = (i,e,c) => document.body.innerHTML = `<crash><info>${i || "Oops"}<
 
 const decodeDataURL = (url) => {
 	return new Promise((resolve,reject) => {
+		const xhr = new XMLHttpRequest();
 
+		xhr.open("GET",url,true);
+
+		xhr.overrideMimeType("text/plain");
+
+		xhr.onload = () => {
+			resolve(xhr.response);
+		};
+
+		xhr.onerror = () => {
+			reject(`Network error (${xhr.status})`);
+		};
+
+		xhr.ontimeout = () => {
+			reject("Network error (timeout");
+		};
+
+		xhr.timeout = 1000;
+
+		xhr.send();
 	});
 };
