@@ -4,7 +4,7 @@ tag {
 	justify-content: center;
 	align-items: center;
 	
-	width: 100%;
+	width: max-content;
 	max-width: 30rem;
 	
 	background: #667;
@@ -14,20 +14,20 @@ tag {
 	border-radius: 1rem;
 	
 	margin: 0.2rem auto;
-	padding: 0.3rem 0.5rem;
+	padding: 0.3rem 0.8rem;
 }
 
 tag title {
 	display: block;
 	
-	font-size: 0.9rem;
+	font-size: 1rem;
 	font-weight: bold;
 	font-weight: var(--bold);
 }
 
 tag description {
 	color: #CCC;
-	font-size: 0.7rem;
+	font-size: 0.65rem;
 }
 
 tag[type="warn"] {
