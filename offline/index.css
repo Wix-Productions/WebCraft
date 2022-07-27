@@ -1,0 +1,49 @@
+* {
+	text-align: center;
+}
+
+button, label {
+	display: block;
+	
+	width: max-content;
+	
+	background: #F0F0F8;
+	
+	color: black;
+	font-size: 1rem;
+	
+	border: 0.1rem solid #F0F0F8;
+	border-radius: 0.5rem;
+	
+	margin: 0.5rem auto;
+	padding: 0.6rem 1rem;
+	
+	cursor: pointer;
+	
+	transition: background 0.2s linear;
+}
+
+button:hover, label:hover, input:focus {
+	background: transparent;
+}
+
+input {
+	display: block;
+	
+	width: 8rem;
+	
+	background: #F0F0F8;
+	
+	color: black;
+	font-size: 0.8rem;
+	
+	border: 0.1rem solid #F0F0F8;
+	border-radius: 0.5rem;
+	
+	margin: 0.5rem auto;
+	padding: 0.2rem 0.4rem;
+	
+	cursor: text;
+	
+	transition: background 0.2s linear;
+}

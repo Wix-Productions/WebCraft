@@ -1,6 +1,4 @@
-const crash = (info="Oops",reason="An unknow error occured",errorcode="0") => {
-	document.body.innerHTML = `<crash><info>${cause}</info><reason>${reason}</reason><a href="https://github.com/Wix-Productions/WebCraft/wiki/Error-Code%3A-${errorcode}">Error code: ${errorcode}</a></crash>`;
-};
+const crash = (i,e,c) => document.body.innerHTML = `<crash><info>${i || "Oops"}</info><reason selectable>${e || "An unknow error occured"}</reason><a href="https://github.com/Wix-Productions/WebCraft/wiki/Error-Code%3A-${c || 0}" target="_blank">Error code: ${c || 0}</a></crash>`;
 
 const decodeDataURL = (url) => {
 	return new Promise((resolve,reject) => {

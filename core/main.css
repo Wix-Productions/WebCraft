@@ -1,0 +1,52 @@
+crash {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	background: #22221A;
+	color: white;
+}
+
+crash info {
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+crash reason {
+	font-family: Menlo;
+	font-size: 0.8rem;
+
+	margin: 0.8rem 0;
+
+	cursor: text;
+}
+
+crash a {
+	background: #06F;
+
+	color: white;
+	font-size: 0.9rem;
+
+	border: 0.1rem solid #06F;
+	border-radius: 0.4rem;
+
+	padding: 0.4rem 0.8rem;
+
+	cursor: pointer;
+
+	transition: background 0.2s linear;
+}
+
+crash a:hover {
+	background: transparent;
+
+	text-decoration: none;
+}

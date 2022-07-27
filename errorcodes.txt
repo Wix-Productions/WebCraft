@@ -1,5 +1,6 @@
 Done	0		Unknow error
 Done	1		Cannot open world
+Done	1-0		Invalid query parameters
 Done	1-1		Cannot create world
 Done	1-2		Cannot load world
 		1-3		Cannot join world
