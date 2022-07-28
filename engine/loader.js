@@ -27,7 +27,7 @@ const Loader = {
 
 	hide: () => {
 		Loader.DOM.container.style.display = "";
-		window.draw = window.drawLocked ? false : true;
+		window.render = window.renderingLocked ? false : true;
 	},
 
 	init: () => {
@@ -74,7 +74,7 @@ const Loader = {
 
 	show: () => {
 		Loader.DOM.container.style.display = "flex";
-		window.draw = false;
+		window.render = false;
 	},
 
 	step: (size=1) => {

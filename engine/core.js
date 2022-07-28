@@ -32,11 +32,11 @@ class CoreEvent extends Core {
 		this.name = name;
 	}
 
-	add(func) {
+	add (func) {
 		this.list[CoreEvent.ID()] = func;
 	}
 
-	call(...args) {
+	call (...args) {
 		for (let id in this.list) {
 			const func = this.list[id];
 
@@ -65,29 +65,29 @@ class CoreObject extends Core {
 		this.update(CoreObject);
 	}
 
-	addEvent(name) {
+	addEvent (name) {
 		this.events[name] = new CoreEvent(name);
 	}
 
-	addListener(name,func) {
+	addListener (name,func) {
 		return this.events[name].add(func);
 	}
 
-	removeListener(name,id) {
+	removeListener (name,id) {
 		this.events[name].list[id] = null;
 	}
 
-	export() {
+	export () {
 		this.events.export.call();
 		return this.raw;
 	}
 
-	reset() {
+	reset () {
 		this.events.reset.call();
 		return new this.instanceof(this.raw,this.id).update();
 	}
 
-	update(i) {
+	update (i) {
 		this.events.update.call();
 		if (i) this.instanceof = i;
 		objectList[this.id] = this;
@@ -103,7 +103,7 @@ class World extends CoreObject {
 		this.update(World);
 	}
 
-	get map() {
+	get map () {
 		if (!this._map) {
 			this._map = new Map(this.raw.map);
 			this.raw.map = this._map.export();
@@ -117,12 +117,35 @@ class World extends CoreObject {
 		return this._map;
 	}
 
-	set map(v) {
+	set map (v) {
 		if (v instanceof Map) {
 			this._map = v;
 			this.raw.map = v.export();
 		} else {
 			crash("Invalid type","Cannot set map property of world with other than a Map");
+		}
+	}
+
+	get package () {
+		if (!this._package) {
+			this._package = new Package(this.raw.package);
+			this.raw.package = this._package.export();
+
+			this._package.addListener("update",() => {
+				this.raw.package = this._package.export();
+				this.update();
+			});
+		}
+
+		return this._package;
+	}
+
+	set package (v) {
+		if (v instanceof Package) {
+			this._package = v;
+			this.raw.package = v.export();
+		} else {
+			crash("Invalid type","Cannot set package property of world with other than a Package");
 		}
 	}
 };
@@ -134,13 +157,13 @@ class Map extends CoreObject {
 		this.update(Map);
 	}
 
-	getChunk(x=0,y=0) {
+	getChunk (x=0,y=0) {
 		this._generateChunks();
 
 		return this.chunks[y][x];
 	}
 
-	setChunk(c,x=0,y=0) {
+	setChunk (c,x=0,y=0) {
 		this._generateChunks();
 
 		if (c instanceof Chunk) {
@@ -154,7 +177,7 @@ class Map extends CoreObject {
 		}
 	}
 
-	_generateChunks() {
+	_generateChunks () {
 		if (!this.chunks) {
 			this.chunks = [];
 
@@ -181,18 +204,6 @@ class Chunk extends CoreObject {
 
 		this.update(Chunk);
 	}
-
-	getBlock(x=0,y=0,z=0) {
-		this._generateBlocks();
-	}
-
-	_generateBlocks() {
-		if (!this.blocks) {
-			this.blocks = {};
-
-
-		}
-	}
 };
 
 class Block extends CoreObject {
@@ -204,4 +215,10 @@ class Block extends CoreObject {
 };
 
 
-const getObject = (id) => objectList[id];
+class Package extends CoreObject {
+	constructor (raw,id) {
+		super(raw,id);
+
+		this.update(Package);
+	}
+};

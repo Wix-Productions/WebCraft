@@ -7,8 +7,8 @@ const crash = (i,e) => {
 	
 	document.body.innerHTML = `<crash><info>${i || "Oops"}</info><reason selectable>${error || e || "An unknow error occured"}</reason></crash>`;
 
-	window.draw = false;
-	window.drawLocked = true;
+	window.render = false;
+	window.renderingLocked = true;
 };
 
 const request = (url,type,timeout) => {

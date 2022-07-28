@@ -24,6 +24,42 @@
 					"gravity": false
 				},
 				"script": ""
+			},{
+				"code": "voidbarrier",
+				"datas": {
+					"durability": {
+						"actual": 1,
+						"max": 1
+					}
+				},
+				"display": "Voidbarrier",
+				"generate": "return new THREE.Mesh(new THREE.BoxGeometry(1,1,1),bT([[16,16,`f00;x;f00;f00;f00;f00;f00;f00;f00;f00;f00;f00;f00;f00;x;f00;x;f00;x;x;x;x;x;x;x;x;x;x;x;x;f00;x;f00;x;f00;x;x;x;x;x;x;x;x;x;x;f00;x;f00;f00;x;x;f00;x;x;x;x;x;x;x;x;f00;x;x;f00;f00;x;x;x;f00;x;x;x;x;x;x;f00;x;x;x;f00;f00;x;x;x;x;f00;x;x;x;x;f00;x;x;x;x;f00;f00;x;x;x;x;x;f00;x;x;f00;x;x;x;x;x;f00;f00;x;x;x;x;x;x;f00;x;x;x;x;x;x;x;f00;f00;x;x;x;x;x;x;x;f00;x;x;x;x;x;x;f00;f00;x;x;x;x;x;f00;x;x;f00;x;x;x;x;x;f00;f00;x;x;x;x;f00;x;x;x;x;f00;x;x;x;x;f00;f00;x;x;x;f00;x;x;x;x;x;x;f00;x;x;x;f00;f00;x;x;f00;x;x;x;x;x;x;x;x;f00;x;x;f00;f00;x;f00;x;x;x;x;x;x;x;x;x;x;f00;x;f00;x;f00;x;x;x;x;x;x;x;x;x;x;x;x;f00;x;f00;x;f00;f00;f00;f00;f00;f00;f00;f00;f00;f00;f00;f00;x;f00`,true]]));",
+				"id": "1",
+				"properties": {
+					"destructible": false,
+					"collectable": false,
+					"craftable": false,
+					"gravity": false
+				},
+				"script": ""
+			},{
+				"code": "stone",
+				"datas": {
+					"durability": {
+						"actual": 16,
+						"max": 16
+					}
+				},
+				"display": "Stone",
+				"generate": "const f = () => {let t = ``; for (let x = 0; x < 256; ++x) { if (x !== 0) {t += `;`} } const c = [`7`,`8`,`6`]; t += c[RandomInt(0,RandomInt(0,c.length - 1))] } return t } return new THREE.Mesh(new THREE.BoxGeometry(1,1,1),bT([[16,16,f()],[16,16,f()],[16,16,f()],[16,16,f()],[16,16,f()],[16,16,f()]]));",
+				"id": "2",
+				"properties": {
+					"destructible": true,
+					"collectable": true,
+					"craftable": false,
+					"gravity": false
+				},
+				"script": ""
 			}
 		],
 

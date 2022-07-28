@@ -14,7 +14,7 @@ crash {
 	background: #22221A;
 	color: white;
 
-	z-index: 4;
+	z-index: 5;
 }
 
 crash info {
@@ -68,7 +68,7 @@ loader {
 
 	background: #111119;
 
-	z-index: 3;
+	z-index: 4;
 }
 
 loader * {
@@ -107,7 +107,11 @@ loader quotes {
 	font-style: italic;
 }
 
-#canvas {
+perftool {
+	z-index: 3;
+}
+
+#core {
 	position: fixed;
 	top: 0;
 	left: 0;

@@ -6,32 +6,39 @@ const Launch = async () => {
 	Loader.show();
 
 	Loader.say("Loading settings");
-	await Settings.get();
+	window.settings = new Settings();
 	Loader.step();
 
-	if (Settings.dev) {
-		Loader.say("Adding PerfTool");
-		document.body.append(PerfTool.container);
-		PerfTool.active = true;
-		Loader.step();
-	} else {
-		Loader.step();
-	}
+	Loader.say("Adding PerfTool");
+	document.body.append(PerfTool.container);
+
+	settings.addListener("change",(e,n,v) => {
+		if (n === "dev") {
+			PerfTool.active = v;
+			PerfTool.container.style.display = v ? "block" : "none";
+		}
+	});
+	Loader.step();
+
+	PerfTool.active = settings.dev;
+	PerfTool.container.style.display = settings.dev ? "block" : "none";
 
 	Loader.say("Initializing world");
 	window.world = new World(datas);
 	Loader.step();
 
-	Loader.say("Initializing map");
-	window.map = world.map;
+	Loader.say("Initializing renderer");
+	window.renderer = new Renderer();
 	Loader.step();
 
-
+	Update();
 };
 
 
 window.addEventListener("DOMContentLoaded",() => {
 	Loader.init()
+
+	window.storage = window.localStorage || window.sessionStorage;
 
 	window.main = document.getElementsByTagName("main")[0];
 
@@ -48,6 +55,25 @@ window.addEventListener("DOMContentLoaded",() => {
 		return;
 	}
 
+	if (!window.storage) {
+		crash("Old browser or device","localStorage and sessionStorage aren't available");
+		return;
+	}
+
+	if (!window.devicePixelRatio) {
+		crash("Old browser or device","devicePixelRatio isn't available");
+		return;
+	}
+
+	const c = document.createElement("canvas");
+
+	if (!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl")))) {
+		crash("Old browser or device","WebGL isn't available");
+		return;
+	}
+
+	window.WebGL2Available = (window.WebGL2RenderingContext && c.getContext("webgl2"));
+
 	if (window.queries) {
 		switch (true) {
 			case (queries.create !== undefined):
@@ -57,15 +83,8 @@ window.addEventListener("DOMContentLoaded",() => {
 			case (queries.load !== undefined):
 				try {
 					request(`blob:${window.location.origin}/${unescape(decodeURIComponent(queries.load))}`,null,2500).then((datas) => {
-						if (window.localStorage) {
-							localStorage.setItem("webraft-offline-world",datas);
-							window.location.search = "?play=0";
-						} else if (window.sessionStorage) {
-							sessionStorage.setItem("webcraft-offline-world",datas);
-							window.location.search = "?play=0";
-						} else {
-							crash("Cannot save world on your device","localStorage and sessionStorage aren't available");
-						}
+						storage.setItem("webraft-offline-world",datas);
+						window.location.search = "?play=0";
 					}).catch((e) => crash("Cannot load world",e));
 				} catch (e) {
 					crash("Cannot load world",e);
@@ -77,15 +96,12 @@ window.addEventListener("DOMContentLoaded",() => {
 				break;
 
 			case (queries.play !== undefined):
-				try {
-					if (window.localStorage) {
-						window.datas = localStorage.getItem("webraft-offline-world");
-					} else if (window.sessionStorage) {
-						window.datas = sessionStorage.getItem("webcraft-offline-world");
-					} else {
-						crash("Cannot save world on your device","localStorage and sessionStorage aren't available");
-					}
+				document.body.setAttribute("without-maintenance","true");
+				document.body.setAttribute("without-tag","true");
 
+				try {
+					window.datas = storage.getItem("webraft-offline-world");
+					
 					if (window.datas) {
 						try {
 							window.datas = JSON.parse(datas);
@@ -98,6 +114,8 @@ window.addEventListener("DOMContentLoaded",() => {
 						} catch (e) {
 							crash("Launching error",e);
 						}
+					} else {
+						crash("Cannot open world","World not found");
 					}
 				} catch (e) {
 					crash("Cannot open world",e);
@@ -112,17 +130,10 @@ window.addEventListener("DOMContentLoaded",() => {
 });
 
 const Update = () => {
-	window.RW = innerWidth;
-	window.RH = innerHeight;
-	window.W = RW * Q;
-	window.H = RH * Q;
-
-	if (window.draw) {
-		try {
-
-		} catch (e) {
-			crash("Cannot render",e);
-		}
+	try {
+		renderer.render();
+	} catch (e) {
+		crash("Cannot render",e);
 	}
 
 	requestAnimationFrame(Update);
