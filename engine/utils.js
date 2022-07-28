@@ -16,10 +16,7 @@ const request = (url,type,timeout) => {
 		const xhr = new XMLHttpRequest();
 
 		xhr.open("GET",url,true);
-
-		if (type) {
-			xhr.overrideMimeType(type);
-		}
+		xhr.responseType = type || "text";
 
 		xhr.onload = () => {
 			resolve(xhr.response);
@@ -39,7 +36,17 @@ const request = (url,type,timeout) => {
 	});
 };
 
-const decodeDataURL = (url) => request(url,"text/plain",1000);
+const Random = (m=0,M=1) => Math.random() * (M - m) + m;
+const IntRandom = (m,M) => Math.round(Random(m,M));
 
-const R = (m=0,M=1) => Math.random() * (M - m) + m;
-const IR = (m,M) => Math.round(R(m,M));
+const wait = (time) => {
+	return new Promise((resolve) => {
+		if (time) {
+			requestAnimationFrame(() => {
+				setTimeout(resolve,time);
+			});
+		} else {
+			requestAnimationFrame(resolve);
+		}
+	});;
+};

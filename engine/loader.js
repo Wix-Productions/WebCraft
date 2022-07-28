@@ -1,14 +1,12 @@
-const quoteDuration = 7500;
+const quoteDuration = 6000;
 let previousQuote = -1;
 
 const RandomQuote = () => {
 	let id = null;
 
 	while (id === null || id === previousQuote) {
-		id = IR(0,Quotes.length - 1);
+		id = IntRandom(0,Quotes.length - 1);
 	}
-
-	window.lastQuote = performance.now();
 
 	return Quotes[id];
 };
@@ -39,17 +37,28 @@ const Loader = {
 		Loader.DOM.bar = document.createElement("bar");
 		Loader.DOM.quote = document.createElement("quotes");
 
-		Loader.DOM.quote.innerHTML = RandomQuote();
-
 		Loader.DOM.barContainer.append(Loader.DOM.bar);
 		Loader.DOM.container.append(Loader.DOM.title);
 		Loader.DOM.container.append(Loader.DOM.barContainer);
 		Loader.DOM.container.append(Loader.DOM.quote);
 		document.body.append(Loader.DOM.container);
 
-		setInterval(() => Loader.DOM.quote.innerHTML = RandomQuote(),quoteDuration);
+		Loader.DOM.container.addEventListener("click",Loader.quote);
+
+		Loader.quote();
 
 		Loader._update();
+	},
+
+	quote: () => {
+		if (window.currentQuoteTimeout) {
+			clearTimeout(currentQuoteTimeout);
+		}
+
+		Loader.DOM.quote.innerHTML = RandomQuote() + "<br />Click to skip";
+		window.lastQuote = performance.now();
+
+		window.currentQuoteTimeout = setTimeout(Loader.quote,quoteDuration);
 	},
 
 	say: (title="Loading") => {
@@ -72,7 +81,8 @@ const Loader = {
 		Loader.value += size;
 
 		if (Loader.value >= Loader.max) {
-			Loader.say("Waiting for the quote");
+			Loader.DOM.container.addEventListener("click",Loader.hide,{once: true});
+			Loader.say("Waiting for the quote (click to skip)");
 			setTimeout(Loader.hide,performance.now() + quoteDuration - lastQuote);
 		}
 

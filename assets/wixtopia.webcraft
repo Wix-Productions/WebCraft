@@ -1,0 +1,67 @@
+{
+	"package": {
+		"author": {
+			"email": "contact@wixonic.fr",
+			"name": "Wixonic"
+		},
+
+		"blocks": [
+			{
+				"code": "error",
+				"datas": {
+					"durability": {
+						"actual": 1,
+						"max": 1
+					}
+				},
+				"display": "Error",
+				"generate": "return new THREE.Mesh(new THREE.BoxGeometry(0.8,0.8,0.8),bT([[2,2,`f0f;0;0;f0f`],[2,2,`f0f;0;0;f0f`],[2,2,`f0f;0;0;f0f`],[2,2,`f0f;0;0;f0f`],[2,2,`0;f0f;f0f;0`],[2,2,`0;f0f;f0f;0`]]));",
+				"id": "0",
+				"properties": {
+					"destructible": false,
+					"collectable": false,
+					"craftable": false,
+					"gravity": false
+				},
+				"script": ""
+			}
+		],
+
+		"creation-date": 0,
+
+		"version": {
+			"code": "1.0",
+			"date": 0,
+			"name": "1.0"
+		}
+	},
+
+	"map": {
+		"chunks": [
+			[
+				{
+					"blocks": {
+						"0-0-0": {
+							"datas": {
+								"durability": {
+									"actual": 1,
+									"max": 1
+								}
+							},
+							"id": "0"
+						}
+					},
+
+					"items": {}
+				}
+			]
+		]	
+	},
+
+	"world": {
+		"author": "Wixonic",
+		"creation-date": 0,
+		"name": "WixTopia",
+		"update-date": 0
+	}
+}

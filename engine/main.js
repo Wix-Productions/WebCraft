@@ -2,9 +2,29 @@ window.onerror = (e) => crash(null,e);
 
 
 const Launch = async () => {
-	Loader.set(1);
+	Loader.set(2);
 	Loader.show();
 
+	Loader.say("Loading settings");
+	await Settings.get();
+	Loader.step();
+
+	if (Settings.dev) {
+		Loader.say("Adding PerfTool");
+		document.body.append(PerfTool.container);
+		PerfTool.active = true;
+		Loader.step();
+	} else {
+		Loader.step();
+	}
+
+	Loader.say("Initializing world");
+	window.world = new World(datas);
+	Loader.step();
+
+	Loader.say("Initializing map");
+	window.map = world.map;
+	Loader.step();
 	
 };
 
@@ -35,7 +55,7 @@ window.addEventListener("DOMContentLoaded",() => {
 
 			case (queries.load !== undefined):
 				try {
-					decodeDataURL(`blob:null/${unescape(decodeURIComponent(queries.load))}`).then((datas) => {
+					request(`blob:null/${unescape(decodeURIComponent(queries.load))}`,null,2500).then((datas) => {
 						if (window.localStorage) {
 							localStorage.setItem("webraft-offline-world",datas);
 							window.location.search = "?play=0";
@@ -72,7 +92,11 @@ window.addEventListener("DOMContentLoaded",() => {
 							crash("Cannot open world",`ParsingError: invalid file (${e})`);
 						}
 
-						Launch();
+						try {
+							Launch();
+						} catch (e) {
+							crash("Launching error",e);
+						}
 					}
 				} catch (e) {
 					crash("Cannot open world",e);
