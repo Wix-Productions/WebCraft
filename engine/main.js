@@ -25,7 +25,8 @@ const Launch = async () => {
 	Loader.say("Initializing map");
 	window.map = world.map;
 	Loader.step();
-	
+
+
 };
 
 
