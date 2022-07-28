@@ -2,7 +2,7 @@ window.onerror = (e) => crash(null,e);
 
 
 const Launch = async () => {
-	Loader.set(2);
+	Loader.set(0);
 	Loader.show();
 
 	Loader.say("Loading settings");
@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded",() => {
 
 			case (queries.load !== undefined):
 				try {
-					request(`blob:null/${unescape(decodeURIComponent(queries.load))}`,null,2500).then((datas) => {
+					request(`blob:${window.location.origin}/${unescape(decodeURIComponent(queries.load))}`,null,2500).then((datas) => {
 						if (window.localStorage) {
 							localStorage.setItem("webraft-offline-world",datas);
 							window.location.search = "?play=0";
