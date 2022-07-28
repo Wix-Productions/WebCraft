@@ -25,6 +25,7 @@ class Settings extends CoreObject {
 			this.raw.antialiasing = b;
 			storage.setItem("setting-antialiasing",b);
 			this.events.change.call("antialiasing",b);
+			this.update();
 		}
 	}
 
@@ -37,6 +38,7 @@ class Settings extends CoreObject {
 			this.raw.dev = b;
 			sessionStorage.setItem("setting-dev",b);
 			this.events.change.call("dev",b);
+			this.update();
 		}
 	}
 
@@ -51,6 +53,7 @@ class Settings extends CoreObject {
 			this.raw.powerPreference = t;
 			storage.setItem("setting-powerPreference",t);
 			this.events.change.call("powerPreference",t);
+			this.update();
 		}
 	}
 
@@ -65,6 +68,7 @@ class Settings extends CoreObject {
 			this.raw.precision = t;
 			storage.setItem("setting-precision",t);
 			this.events.change.call("precision",t);
+			this.update();
 		}
 	}
 
@@ -73,10 +77,11 @@ class Settings extends CoreObject {
 	}
 
 	set quality (i) {
-		if (typeof i === "number" && i >= 0.5 && i <= 10) {
+		if (typeof i === "number" && i >= 0.5 && i <= devicePixelRatio) {
 			this.raw.quality = i;
 			storage.setItem("setting-quality",i);
 			this.events.change.call("quality",i);
+			this.update();
 		}
 	}
 
@@ -85,10 +90,11 @@ class Settings extends CoreObject {
 	}
 
 	set renderDistance (i) {
-		if (typeof i === "number" && i >= 0.5 && i <= 10) {
+		if (typeof i === "number" && i >= 1 && i <= 32) {
 			this.raw.renderDistance = i;
 			storage.setItem("setting-renderDistance",i);
 			this.events.change.call("renderDistance",i);
+			this.update();
 		}
 	}
 
@@ -101,6 +107,7 @@ class Settings extends CoreObject {
 			this.raw.WebGL2 = b;
 			storage.setItem("setting-WebGL2",b);
 			this.events.change.call("WebGL2",b);
+			this.update();
 		}
 	}
 };

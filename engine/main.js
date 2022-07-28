@@ -2,8 +2,12 @@ window.onerror = (e) => crash(null,e);
 
 
 const Launch = async () => {
-	Loader.set(0);
+	Loader.set(6);
 	Loader.show();
+
+	Loader.say("Loading rendering code");
+	window.renderingCode = await request("../engine/rendering-code.js");
+	Loader.step();
 
 	Loader.say("Loading settings");
 	window.settings = new Settings();
@@ -27,9 +31,17 @@ const Launch = async () => {
 	window.world = new World(datas);
 	Loader.step();
 
+	Loader.say("Generating chunks");
+	world.map.generateChunks();
+	Loader.step();
+
 	Loader.say("Initializing renderer");
 	window.renderer = new Renderer();
 	Loader.step();
+
+	for (let id of chunkList) {
+		objectList[id].render();
+	}
 
 	Update();
 };
