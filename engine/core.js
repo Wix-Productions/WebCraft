@@ -127,6 +127,11 @@ class CoreObject extends Core {
 };
 
 class World extends CoreObject {
+	static size = {
+		width: 32,
+		height: 32
+	}
+	
 	constructor (raw,id) {
 		super(raw,id);
 
@@ -155,6 +160,15 @@ class World extends CoreObject {
 		} else {
 			crash("Invalid type","Cannot set map property of world with other than a WorldMap");
 		}
+	}
+	
+	get name () {
+		return this.raw.world.name || "New world";
+	}
+	
+	set name (v) {
+		this.raw.world.name = v;
+		document.getElementsByTagName("title")[0].innerHTML = `${v} | WebCraft`;
 	}
 
 	get pack () {
@@ -217,10 +231,16 @@ class WorldMap extends CoreObject {
 };
 
 class Chunk extends CoreObject {
+	static size = {
+		width: 16,
+		height: 16,
+		depth: 64
+	}
+	
 	constructor (raw,id) {
 		super(raw,id);
 
-		window.chunkList.push(this.id);
+		chunkList.push(this.id);
 
 		this.update(Chunk);
 
@@ -254,8 +274,9 @@ class Chunk extends CoreObject {
 			const block = this.blocks[pos];
 			
 			if (block.mesh instanceof THREE.Mesh) {
+				renderedThings++;
 				const p = block.position;
-				const r = block.rotation
+				const r = block.rotation;
 				block.mesh.position.set(p.x,p.y,p.z);
 				block.mesh.rotation.set(r.x.radian,r.y.radian,r.z.radian);
 				renderer.scene.add(block.mesh);
@@ -304,10 +325,6 @@ class Block extends RenderableObject {
 		this.mesh = new THREE.Mesh(this.geometry,this.material);
 
 		this.update(Block);
-	}
-
-	remove () {
-		this.mesh.dispose();
 	}
 };
 

@@ -11,7 +11,7 @@ const crash = (i,e) => {
 	window.renderingLocked = true;
 };
 
-const request = (url,type,timeout) => {
+const request = (url,type,timeout,func) => {
 	return new Promise((resolve,reject) => {
 		const xhr = new XMLHttpRequest();
 
@@ -25,6 +25,8 @@ const request = (url,type,timeout) => {
 		xhr.onerror = () => {
 			reject(`Network error (${xhr.status})`);
 		};
+		
+		xhr.onprogress = (e) => (func || new Function())(e);
 
 		xhr.ontimeout = () => {
 			reject("Network error (timeout");

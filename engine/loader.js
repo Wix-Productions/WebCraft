@@ -55,7 +55,7 @@ const Loader = {
 			clearTimeout(currentQuoteTimeout);
 		}
 
-		Loader.DOM.quote.innerHTML = RandomQuote() + "<br />Click to skip";
+		Loader.DOM.quote.innerHTML = RandomQuote() + "<br />(Click to skip)";
 		window.lastQuote = performance.now();
 
 		window.currentQuoteTimeout = setTimeout(Loader.quote,quoteDuration);
@@ -63,6 +63,7 @@ const Loader = {
 
 	say: (title="Loading") => {
 		Loader.title = title;
+		Loader._update();
 	},
 
 	set: (max=2) => {
@@ -82,18 +83,17 @@ const Loader = {
 
 		if (Loader.value >= Loader.max) {
 			Loader.DOM.container.addEventListener("click",Loader.hide,{once: true});
-			Loader.say("Waiting for the quote (click to skip)");
-			setTimeout(Loader.hide,performance.now() + quoteDuration - lastQuote);
+			Loader.say();
 		}
 
 		Loader._update();
 	},
 
 	_update: () => {
-		Loader.DOM.title.innerHTML = `${Loader.title} (${Loader.value}/${Loader.max})`;
+		Loader.DOM.title.innerHTML = `${Loader.title} (${Math.floor(Loader.value / Loader.max * 100)}/100)`;
 
 		try {
-			Loader.DOM.bar.style.width = `${(Loader.value / Loader.max * 100).toFixed(0)}%`;
+			Loader.DOM.bar.style.width = `${Loader.value / Loader.max * 100}%`;
 		} catch {
 			Loader.DOM.bar.style.width = "0%";
 		}
