@@ -8,7 +8,7 @@ const defaultDisplay = () => {
 		const name = file.name.split(".");
 
 		if (file && name[name.length - 1] === "webcraft" && name[name.length - 2] !== "resources") {
-			window.location.search = `?load=${encodeURIComponent(escape((URL.createObjectURL(file)).replace(`blob:${window.location.origin}/`,"")))}`;
+			window.location.search = `?play=${encodeURIComponent(escape((URL.createObjectURL(file)).replace(`blob:${window.location.origin}/`,"")))}`;
 		}
 	});
 
