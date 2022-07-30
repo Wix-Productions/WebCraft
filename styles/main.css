@@ -1,5 +1,5 @@
 html {
-	background: #222;
+	background: #666;
 }
 
 main {
@@ -14,5 +14,5 @@ main {
 }
 
 main > canvas {
-	background: #888;
+	background: #000;
 }
