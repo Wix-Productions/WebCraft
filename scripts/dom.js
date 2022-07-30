@@ -1,5 +1,7 @@
 const DOM = {
-	init () {},
+	init () {
+		window.addEventListener("resize",() => render = true);
+	},
 
 
 	get body () {

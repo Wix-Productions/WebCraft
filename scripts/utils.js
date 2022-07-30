@@ -40,9 +40,7 @@ const distanceBetween = (a=[],b=[]) => Math.sqrt(Math.pow((a[0] || 0) - (b[0] ||
 const Script = (js="") => {
 	const replacements = {
 		"null": /((?:^|\W))(?:addEventListener|document|eval|(?:new\s+Function)|renderer|window|world|Block|DOM|Renderer|Request|Script|TextureLoader|Ticker|World)(?:(?!\w)|$)/g,
-
-		"Texture": /((?:^|\W))T(?:(?!\w)|$)/g,
-		"TextureLoader": /((?:^|\W))(?:Loader|L)(?:(?!\w)|$)/g,
+		
 		"world.resources": /((?:^|\W))Resources(?:(?!\w)|$)/g,
 
 		"World.size": /((?:^|\W))WorldSize(?:(?!\w)|$)/g,
@@ -56,4 +54,16 @@ const Script = (js="") => {
 	}
 
 	return new Function(js);
+};
+
+const wait = (time) => {
+	return new Promise((resolve) => {
+		if (time) {
+			requestAnimationFrame(() => {
+				setTimeout(resolve,time);
+			});
+		} else {
+			requestAnimationFrame(resolve);
+		}
+	});
 };

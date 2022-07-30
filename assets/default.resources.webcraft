@@ -36,7 +36,7 @@
 		},
 
 		"materials": {
-			"error": "return new THREE.MeshBasicMaterial({color: `#${Int(Random(256,4095)).toString(16)}`})"
+			"error": "const M=(t)=>new THREE.MeshLambertMaterial({map:t});return[M(T(`error-a`)),M(T(`error-a`)),M(T(`error-a`)),M(T(`error-a`)),M(T(`error-a`)),M(T(`error-a`))]"
 		},
 
 		"textures": {

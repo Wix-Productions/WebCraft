@@ -32,9 +32,22 @@ class Block {
 	}
 	
 	get material () {
-		const block = world.materials.blocks[this.type] || world.materials.blocks["error"];
+		const block = world.resources.blocks[this.type] || world.resources.blocks["error"];
 		
 		return Generated.materials[block.material];
+	}
+
+	get mesh () {
+		this._mesh = new THREE.Mesh(this.geometry,this.material);
+		this._mesh.position.set(this.position[0],this.position[1],this.position[2]);
+		this._mesh.rotation.set(this.rotation[0],this.rotation[1],this.rotation[2]);
+		this._mesh.updateMatrix();
+
+		return this._mesh;
+	}
+
+	get visible () {
+		return true;
 	}
 
 	export () {

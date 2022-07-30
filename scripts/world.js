@@ -1,7 +1,7 @@
 class World {
 	static size = {
-		width: 16,
-		depth: 16
+		width: 8,
+		depth: 8
 	}
 
 	static async generate (type="flat",...d) {
@@ -23,7 +23,7 @@ class World {
 		for (let x = 0; x < this.chunks.length && x < World.size.width; ++x) {
 			for (let z = 0; z < this.chunks[x].length && z < World.size.depth; ++z) {
 				const chunk = this.chunks[x][z];
-				this.chunks[x][z] = new Chunk(chunk.blocks,chunk.position);
+				this.chunks[x][z] = new Chunk(chunk.blocks,chunk.position,datas.resources);
 			}
 		}
 	}

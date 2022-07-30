@@ -3,10 +3,10 @@ class Renderer {
 		this.canvas = document.createElement("canvas");
 
 		this.scene = new THREE.Scene();
-		this.camera = new THREE.PerspectiveCamera(50,0,0.1,1);
+		this.camera = new THREE.PerspectiveCamera(50,0,0.1,10000);
 
-		this.camera.position.set(0,25,-5);
-		this.camera.lookAt(0,0,0);
+		this.camera.position.set(-50,25,-50);
+		this.camera.lookAt(25,7,25);
 
 		this.lights = {
 			ambient: new THREE.AmbientLight("#FFF",0.25),
@@ -59,8 +59,6 @@ class Renderer {
 		this.renderer = new THREE.WebGLRenderer({
 			canvas: this.canvas
 		});
-
-		this.render = false;
 	}
 
 	async update () {
@@ -74,7 +72,6 @@ class Renderer {
 
 			this.camera.aspect = W / H;
 			this.camera.fov = settings.fov;
-			this.camera.far = settings.renderDistance * Math.min(Chunk.size.width,Chunk.size.depth);
 			this.camera.updateProjectionMatrix();
 
 			this.renderer.setSize(W,H);
@@ -83,13 +80,15 @@ class Renderer {
 
 			for (let x = 0; x < world.chunks.length && x < World.size.width; ++x) {
 				for (let z = 0; z < world.chunks[x].length && z < World.size.depth; ++z) {
-					this.scene.add(await world.chunks[x][z].render());
+					await world.chunks[x][z].render();
 				}
 			}
 
 			this.renderer.render(this.scene,this.camera);
 
 			this.endRender = performance.now();
+
+			console.info(`${this.renderer.info.render.triangles} triangles displayed in ${this.renderTime} ms`);
 		}
 
 		this.endUpdate = performance.now();
