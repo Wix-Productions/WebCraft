@@ -9,9 +9,12 @@ class Renderer {
 		this.camera.lookAt(0,0,0);
 
 		this.lights = {
-			ambient: new THREE.AmbientLight("#FFF",1),
+			ambient: new THREE.AmbientLight("#FFF",0.25),
 			spot: new THREE.SpotLight("#FFF",1,0,Math.PI / 2)
 		};
+		
+		this.lights.spot.position.set(0,1000,0);
+		this.lights.spot.lookAt(0,0,0);
 
 		this.scene.add(this.lights.ambient,this.lights.spot);
 
@@ -80,7 +83,7 @@ class Renderer {
 
 			for (let x = 0; x < world.chunks.length && x < World.size.width; ++x) {
 				for (let z = 0; z < world.chunks[x].length && z < World.size.depth; ++z) {
-					world.chunks[x][z].render();
+					this.scene.add(await world.chunks[x][z].render());
 				}
 			}
 

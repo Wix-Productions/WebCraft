@@ -13,21 +13,40 @@ window.Ticker = {
 window.addEventListener("load",async () => {
 	const fakeStorage = {
 		getItem () {},
-		setItem () {},
-		clear () {}
+		setItem () {}
 	};
 
 	window.sessionStorage = window.sessionStorage || fakeStorage;
 	window.storage = localStorage || sessionStorage;
 	window.localStorage = window.localStorage || fakeStorage;
-	window.TextureLoader = new THREE.TextureLoader();
-
-
+	
 	window.settings = await Settings.load();
+	
 	window.world = await World.generate();
+	
+	window.Generated = {
+		geometries: {},
+		materials: {},
+		textures: {}
+	};
+	
+	for (let id in world.resources.geometries) {
+		Generated.geometries[id] = Script(world.resources.geometries[id])();
+	}
+	
+	for (let id in world.resources.textures) {
+		const Loader = new THREE.TextureLoader();
+		
+		Generated.textures[id] = await new Promise((resolve,reject) => Loader.load(world.resources.textures[id],resolve,null,reject));
+	}
+	
+	for (let id in world.resources.materials) {
+		Generated.materials[id] = Script(world.resources.materials[id])();
+	}
+	
 	window.renderer = new Renderer();
 
-	DOM.color = "#888";
+	DOM.color = "#111119";
 	DOM.title = null;
 
 	DOM.init();
@@ -36,6 +55,11 @@ window.addEventListener("load",async () => {
 
 	window.render = true;
 	renderer.render = true;
+	
+	alert(JSON.stringify({
+		infos: renderer.renderer.info,
+		childs: renderer.scene.children.length
+	}));
 });
 
 const Update = () => {

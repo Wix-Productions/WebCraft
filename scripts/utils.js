@@ -55,7 +55,5 @@ const Script = (js="") => {
 		js = js.replaceAll(replacements[value],"$1" + value);
 	}
 
-	console.log(js);
-
 	return new Function(js);
 };
