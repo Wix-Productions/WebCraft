@@ -17,24 +17,31 @@
 		"blocks": {
 			"error": {
 				"geometry": "box",
-				"material": "error"
+				"material": "error",
+				
+				"rotation": {
+					"x": 0,
+					"y": 0,
+					"z": 0
+				}
 			}
 		},
 
 		"generations": {
 			"flat": "let b=[];for(let x=0;x<ChunkSize.width;++x){b[x]=[];for(let z=0;z<ChunkSize.depth;++z){b[x][z]=[`voidbarrier`,`stone`,`stone`,`stone`,`dirt`,`dirt`,`grass`]}}let c=[];for(let x=0;x<WorldSize.width;++x){c[x]=[];for(let z=0;z<WorldSize.depth;++z){c[x][z]={blocks:b,position:{x:x,z:z}}}}return{chunks:c}"
 		},
+		
 		"geometries": {
 			"box": "return new THREE.BoxGeometry(1,1,1)"
 		},
 
 		"materials": {
-			"error": "const M = (t) => new THREE.MeshLambertMaterial({map:t}); return [M(T('error-a')),M(T('error-a')),M(T('error-a')),M(T('error-a')),M(T('error-a')),M(T('error-a'))]"
+			"error": "return new THREE.MeshBasicMaterial({color: `#${Int(Random(256,4095)).toString(16)}`})"
 		},
 
 		"textures": {
-			"error-a": "return L.load(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQImQXBAQEAAACAEP9PF1IISg1Dzgf5+WD3KgAAAABJRU5ErkJggg==`)",
-			"error-b": "return L.load(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQImQXBAQEAAACAEP9PF1BKCg1Dzgf5Z4meawAAAABJRU5ErkJggg==`)"
+			"error-a": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQImQXBAQEAAACAEP9PF1IISg1Dzgf5+WD3KgAAAABJRU5ErkJggg==",
+			"error-b": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQImQXBAQEAAACAEP9PF1BKCg1Dzgf5Z4meawAAAABJRU5ErkJggg=="
 		}
 	}
 }
