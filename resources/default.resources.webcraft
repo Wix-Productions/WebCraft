@@ -1,0 +1,28 @@
+{
+	"blocks": {
+		"error": {
+			"generate": "new THREE.BoxGeometry(0.9,0.9,0.9),new THREE.MeshLambertMaterial({map:load(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQImQXBAQEAAACAEP9PF1IISg1Dzgf5+WD3KgAAAABJRU5ErkJggg==`)})",
+			"name": "Errorblock",
+			"properties": {},
+			"rotation": {"x":0,"y":0,"z":0}
+		},
+		"voidbarrier": {
+			"generate": "new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({map:load(`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAA0VXHyAAAAh0lEQVQ4EZWTWQ7AIAhEsfe/s1XSMQNlif6wvRmaGscUmUNk7CgXx2huxWYPxIhmmBRgNaLYLOeJ1jA/g87ELwgNMhMvPlw0OMOdrFMy2bASqutn/KCIornrCFi91ABf1poA5AVXPQ/7ujJWlgWcs5BzZowBD1gQ5WARI6btQazPuP3TgR00L+XPY69US1v2AAAAAElFTkSuQmCC`)})",
+			"name": "Voidbarrier",
+			"properties": {},
+			"rotation": {"x":0,"y":0,"z":0}
+		}
+	},
+
+	"generations": {
+		"flat": "let b=[];for(let x=0;x<World.size.world.width;++x){b[x]=[];for(let z=0;z<World.size.chunk.depth;++z){b[x][z]=[`voidbarrier`,`stone`,`stone`,`stone`,`dirt`,`dirt`,`grass`]}}let c=[];for(let x=0;x<World.size.world.width;++x){c[x]=[];for(let z=0;z<World.size.world.depth;++z){c[x][z]={blocks:b,position:{}}}}return{chunks:c}"
+	},
+	
+	"description": "The official default resources pack for WebCraft",
+	"name": "Default",
+	"version": {
+		"code": "1.0-dev",
+		"date": 0,
+		"name": "1.0 Alpha"
+	}
+}
