@@ -29,9 +29,13 @@ const Load = (url="",type="text",timeout=10000) => {
 	});
 };
 
+const Radian = (d=0) => (d % 360) * Math.PI / 180;
 const Random = (m=1,M=1) => Math.random() * (M - m) + m;
+const Script = (txt="") => {
+	console.info(`Executed: ${txt}`);
 
-const Script = (txt="") => new Function(txt)();
+	return new Function(txt)();
+};
 
 const wait = (time=0) => {
 	return new Promise((resolve) => {
