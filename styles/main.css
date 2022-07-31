@@ -11,3 +11,22 @@ canvas {
 	top: 0;
 	left: 0;
 }
+
+.stats {
+	display: block;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	max-width: 50%;
+	max-height: 50%;
+
+	color: #FFF;
+	font-family: Menlo;
+	font-size: 0.6rem;
+
+	overflow: scroll;
+
+	z-index: 1;
+}
